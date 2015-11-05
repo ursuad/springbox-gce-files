@@ -14,9 +14,9 @@ spec:
   - port: 15672
     targetPort: 15672
     protocol: TCP
-    name: amqp
+    name: http
   selector:
-    app: http
+    app: rabbitmq
 ---
 apiVersion: v1
 kind: ReplicationController
