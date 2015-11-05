@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: springbox-catalog
+  labels:
+    app: springbox-catalog
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    app: springbox-catalog
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: my-springbox-catalog
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: springbox-catalog
+    spec:
+      containers:
+      - name: auth-server
+        image: ursuad/tutorial-springbox-catalog:latest
+        env:
+        - name: CONFIG_SERVER_HOST
+          value: "config-server"
+        - name: CONFIG_SERVER_PORT
+          value: "8888"
+        - name: SPRING_PROFILES_ACTIVE
+          value: "container-engine"
+        ports:
+        - containerPort: 8080

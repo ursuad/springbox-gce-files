@@ -1,0 +1,15 @@
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  name: "config-server-frontend"
+  labels:
+    name: "config-server-frontend"
+spec:
+  type: "LoadBalancer"
+  ports:
+    -
+      port: 8888
+      targetPort: 8888
+      protocol: "TCP"
+  selector:
+    app: config-server

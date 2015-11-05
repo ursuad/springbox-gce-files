@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitmqsvc
+  labels:
+    app: rabbitmq
+spec:
+  type: NodePort
+  ports:
+  - port: 5672
+    targetPort: 5672
+    protocol: TCP
+    name: http
+  - port: 15672
+    targetPort: 15672
+    protocol: TCP
+    name: amqp
+  selector:
+    app: rabbitmq
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: my-rabbitmq
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: rabbitmq
+    spec:
+      containers:
+      - name: rabbitmq
+        image: ursuad/docker-rabbitmq:latest
+        ports:
+        - containerPort: 5672
+        - containerPort: 15672

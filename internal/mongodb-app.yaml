@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb
+  labels:
+    app: mongodb
+spec:
+  type: NodePort
+  ports:
+  - port: 27017
+    targetPort: 27017
+    protocol: TCP
+    name: mongod
+  - port: 28017
+    targetPort: 28017
+    protocol: TCP
+    name: status
+  selector:
+    app: mongodb
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: my-mongodb
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+      - name: mongodb
+        image: ursuad/docker-mongodb:latest
+        env:
+        - name: AUTH
+          value: "no"
+        ports:
+        - containerPort: 27017
+        - containerPort: 28017

@@ -1,0 +1,15 @@
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  name: "eureka-frontend"
+  labels:
+    name: "eureka-frontend"
+spec:
+  type: "LoadBalancer"
+  ports:
+    -
+      port: 8761
+      targetPort: 8761
+      protocol: "TCP"
+  selector:
+    app: eureka

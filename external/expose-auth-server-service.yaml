@@ -1,0 +1,15 @@
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  name: "auth-server-frontend"
+  labels:
+    name: "auth-server-frontend"
+spec:
+  type: "LoadBalancer"
+  ports:
+    -
+      port: 9999
+      targetPort: 9999
+      protocol: "TCP"
+  selector:
+    app: auth-server
