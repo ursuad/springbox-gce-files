@@ -37,3 +37,9 @@ spec:
           value: "container-engine"
         ports:
         - containerPort: 8081
+        livenessProbe:
+            httpGet:
+              path: /health
+              port: 8081
+            initialDelaySeconds: 70
+            timeoutSeconds: 1

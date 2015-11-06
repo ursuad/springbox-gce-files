@@ -30,9 +30,9 @@ spec:
         image: ursuad/tutorial-springbox-auth-server:latest
         ports:
         - containerPort: 9999
-        livenessProbe:
-            httpGet:
-              path: /health
-              port: 9999
-            initialDelaySeconds: 20
-            timeoutSeconds: 1
+#        livenessProbe:
+#            httpGet:
+#              path: /health
+#              port: 9999
+#            initialDelaySeconds: 60
+#            timeoutSeconds: 1
