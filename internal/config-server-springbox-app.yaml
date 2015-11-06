@@ -19,7 +19,7 @@ kind: ReplicationController
 metadata:
   name: my-config-server
 spec:
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
