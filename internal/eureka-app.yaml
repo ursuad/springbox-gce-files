@@ -37,5 +37,5 @@ spec:
             httpGet:
               path: /health
               port: 8761
-            initialDelaySeconds: 20
+            initialDelaySeconds: 60
             timeoutSeconds: 1
