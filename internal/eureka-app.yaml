@@ -38,4 +38,4 @@ spec:
               path: /health
               port: 8761
             initialDelaySeconds: 60
-            timeoutSeconds: 1
+            timeoutSeconds: 2
