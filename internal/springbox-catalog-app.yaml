@@ -29,7 +29,7 @@ spec:
         image: ursuad/tutorial-springbox-catalog:latest
         env:
         - name: CONFIG_SERVER_HOST
-          value: "config-server"
+          value: "config-server-svc"
         - name: CONFIG_SERVER_PORT
           value: "8888"
         - name: SPRING_PROFILES_ACTIVE
