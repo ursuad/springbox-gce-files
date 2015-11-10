@@ -1,11 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: springbox-api-gateway
+  name: springbox-gateway-svc
   labels:
     app: springbox-api-gateway
 spec:
-  type: NodePort
   ports:
   - port: 9000
     targetPort: 9000
